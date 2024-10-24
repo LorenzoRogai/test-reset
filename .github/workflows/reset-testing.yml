@@ -1,0 +1,23 @@
+name: Reset Testing
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * 0'
+
+permissions:
+  contents: write
+
+jobs:
+  reset-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with: 
+          ref: testing
+          fetch-depth: 0
+      - name: Reset the branch
+        run: git reset --hard main
+      - name: Push the changes
+        run: git push -f
