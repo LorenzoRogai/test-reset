@@ -18,6 +18,6 @@ jobs:
           ref: testing
           fetch-depth: 0
       - name: Reset the branch
-        run: git reset --hard main
+        run: git reset --hard origin/main
       - name: Push the changes
         run: git push -f
